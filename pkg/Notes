@@ -1,0 +1,86 @@
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    lastname VARCHAR(100) NOT NULL,
+    firstname VARCHAR(100) NOT NULL,
+    middlename VARCHAR(100),
+    position VARCHAR(100),
+    department VARCHAR(100),
+    email VARCHAR(150),
+    phonenumber VARCHAR(50),
+    hiredate DATE,
+    status VARCHAR(50),
+    photourl TEXT,
+    notes TEXT
+);
+
+
+    id, lastname, firstname, middlename, position, department, email, phonenumber, hiredate, status, photourl, notes
+
+
+
+
+
+
+
+
+
+
+
+    	router.HandleFunc("/getHandler", JWTMiddleware(getHandler)).Methods(http.MethodGet, http.MethodOptions)
+    	router.HandleFunc("/addHandler", JWTMiddleware(addHandler)).Methods(http.MethodPost, http.MethodOptions)
+    	router.HandleFunc("/admin", JWTMiddleware(IsAdmin(adminHandler))).Methods(http.MethodGet, http.MethodOptions)
+
+
+    func adminHandler(w http.ResponseWriter, r *http.Request) {
+    	fmt.Fprintln(w, "admin")
+    }
+
+    func getHandler(w http.ResponseWriter, r *http.Request) {
+    	fmt.Fprint(w, "Hello, this is getHandler")
+    }
+
+    func addHandler(w http.ResponseWriter, r *http.Request) {
+    	fmt.Fprint(w, "Hello, this is addHandler")
+    }
+
+
+
+	//router.HandleFunc("/add_employee", AddEmployee).Methods(http.MethodPost, http.MethodOptions)
+	//router.HandleFunc("/employees", GetAllEmployees).Methods(http.MethodGet, http.MethodOptions)
+	//router.HandleFunc("/employee", GetEmployee).Methods(http.MethodGet, http.MethodOptions)
+	//router.HandleFunc("/Add_employee", CreateEmployee).Methods(http.MethodPost, http.MethodOptions)
+	//router.HandleFunc("/Delete_employee", DeleteEmployee).Methods(http.MethodDelete, http.MethodOptions)
+
+
+
+
+
+
+
+
+
+	// Middleware для проверки JWT
+    //func JWTMiddleware(next http.HandlerFunc) http.HandlerFunc {
+    //	return func(w http.ResponseWriter, r *http.Request) {
+    //		tokenStr := strings.TrimPrefix(r.Header.Get("Authorization"), "Bearer ")
+    //		if tokenStr == "" {
+    //			http.Error(w, "Missing token", http.StatusUnauthorized)
+    //			return
+    //		}
+    //
+    //		claims := &Claims{}
+    //		token, err := jwt.ParseWithClaims(tokenStr, claims, func(token *jwt.Token) (interface{}, error) {
+    //			return jwtKey, nil
+    //		})
+    //		if err != nil || !token.Valid {
+    //			http.Error(w, "Invalid token", http.StatusUnauthorized)
+    //			return
+    //		}
+    //
+    //		// Сохраняем claims в context
+    //		r.Header.Set("X-User", claims.Username)
+    //		r.Header.Set("X-Role", claims.Role)
+    //
+    //		next(w, r)
+    //	}
+    //}
